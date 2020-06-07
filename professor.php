@@ -196,7 +196,8 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
     
   </div>
 </div>
-<!--{ echo'<p style="color:red;font-size:15px;">'.@$_GET['q7'];}?>-->
+<?php if(@$_GET['q7'])
+{ echo'<p style="color:red;font-size:15px;">'.@$_GET['q7'];}?>
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-12 control-label" for=""></label>
@@ -219,17 +220,15 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 <div class="col-md-3 box">
 <a href="#" data-toggle="modal" data-target="#login">Admin Login</a></div>
 <div class="col-md-3 box">
-<a href="#" data-toggle="modal" data-target="#developers">Developers</a>
+<a href="#" data-toggle="modal" data-target="#developers">copyright</a>
 </div>
-<div class="col-md-3 box">
-<a href="feedback.php" target="_blank">Feedback</a></div></div>
 <!-- Modal For Developers-->
 <div class="modal fade title1" id="developers">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Developers</span></h4>
+        <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">copyright</span></h4>
       </div>
 	  
       <div class="modal-body">
@@ -256,7 +255,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title"><span style="color:orange;font-family:'typo' ">LOGIN</span></h4>
+        <h4 class="modal-title"><span style="color:blue;font-family:'typo' ">LOGIN</span></h4>
       </div>
       <div class="modal-body title1">
 <div class="row">

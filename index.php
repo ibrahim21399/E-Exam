@@ -10,6 +10,29 @@
  <link rel="stylesheet" href="css/main.css">
  <link  rel="stylesheet" href="css/font.css">
  <script src="js/jquery.js" type="text/javascript"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script>
+/*$(document).ready(function(){
+    $('#faculty').on('change', function(){
+        var facultyID = $(this).val();
+        if(facultyID){
+            $.ajax({
+                type:'POST',
+                url:'ajaxData.php',
+                data:'faculty_id='+facultyID,
+                success:function(html){
+                    $('#department').html(html);
+                }
+            }); 
+        }else{
+            $('#department').html('<option value="">Select faculty first</option>');
+        }
+    });
+    
+});*/
+</script>
+
+
 
   <script src="js/bootstrap.min.js"  type="text/javascript"></script>
  	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
@@ -148,29 +171,43 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
     
   </div>
 </div>
-
+<?php
+/*
+$conn =new mysqli("localhost","root","","e_exam");  
+$query = "SELECT * FROM faculty WHERE status = 1 ORDER BY faculty_name ASC"; 
+$result = $conn->query($query); */
+?>
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-12 control-label" for="faculty"></label>
   <div class="col-md-12">
-    <select id="faculty" name="faculty" placeholder="........." class="form-control input-md" >
+  <select id="faculty" name="faculty" placeholder="........." class="form-control input-md" >
     <option value="">Select faculty</option>
    <option value="computer & information">computer & information</option>
   <option value="Arts">Arts</option>
   <option value="engineering">engineering</option> </select>
+    <?php 
+    /*
+    if($result->num_rows > 0){ 
+        while($row = $result->fetch_assoc()){  
+            echo '<option value="'.$row['faculty_id'].'">'.$row['faculty_name'].'</option>'; 
+        } 
+    }else{ 
+        echo '<option value="">faculty not available</option>'; 
+    } */?>
+    
   </div>
 </div>
-
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-12 control-label" for="faculty"></label>
   <div class="col-md-12">
-    <select id="level" name="level" placeholder="select level" class="form-control input-md" >
-    <option value="">Select level</option>
+    <select id="level" name="level" class="form-control input-md" >
+   <option value="">Select level</option>
    <option value="one">one</option>
   <option value="two">two</option>
-  <option value="three">three</option>
-  <option value="four">four</option>
+  <option value="three">three</option> 
+  <option value="four">four</option> 
    </select>
   </div>
 </div>
@@ -179,7 +216,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 <div class="form-group">
   <label class="col-md-12 control-label" for="faculty"></label>
   <div class="col-md-12">
-    <select id="department" name="department" placeholder="........." class="form-control input-md" >
+     <select id="department" name="department" placeholder="........." class="form-control input-md" >
     <option value="">Select department</option>
    <option value="se">software engineering</option>
   <option value="is">information system</option>

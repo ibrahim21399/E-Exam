@@ -73,10 +73,13 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
         <li <?php if(@$_GET['q']==0) echo'class="active"'; ?>><a href="dashadmin.php?q=0">Home<span class="sr-only">(current)</span></a></li>
         <li <?php if(@$_GET['q']==1) echo'class="active"'; ?>><a href="dashadmin.php?q=1">Students</a></li>
 		<li <?php if(@$_GET['q']==2) echo'class="active"'; ?>><a href="dashadmin.php?q=2">professors</a></li>
-        
-        </li><li class="pull-right"> <a href="logout.php?q=account.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
-		
+    <li class="dropdown <?php if(@$_GET['q']==3 || @$_GET['q']==4) echo'active"'; ?>">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Approve SignUp<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="dashadmin.php?q=3">Students</a></li>
+            <li><a href="dashadmin.php?q=4">Proffesors</a></li>
       </ul>
+      </li><li class="pull-right"> <a href="logout.php?q=account.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
           </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -159,6 +162,61 @@ echo '</table></div></div>';
 
 }?>
 <!--professors end-->
+
+<!--students approve start-->
+<?php if(@$_GET['q']==3) {
+
+$result = mysqli_query($con,"SELECT * FROM un_students") or die('Error');
+echo  '<div class="panel"><div class="table-responsive"><table class="table table-striped title1">
+<tr><td><b>S.N.</b></td><td><b>Name</b></td><td><b>Gender</b></td><td><b>Email</b></td><td><b>Studentcode</b></td><td><b>Mobile</b></td><td><b>Faculty</b></td><td><b>level</b></td><td><b>Department</b></td><td></td><td></td></tr>';
+$c=1;
+while($row = mysqli_fetch_array($result)) {
+	$name = $row['name'];
+	$gender = $row['gender'];
+    $email = $row['email'];
+    $studentcode = $row['studentcode'];
+    $phone = $row['phone'];
+    $faculty = $row['faculty'];
+    $level = $row['level'];
+    $department = $row ['department'];
+
+	echo '<tr><td>'.$c++.'</td><td>'.$name.'</td><td>'.$gender.'</td><td>'.$email.'</td><td>'.$studentcode.'</td><td>'.$phone.'</td><td>'.$faculty.'</td><td>'.$level.'</td><td>'.$department.'</td><td><a href="approvestudent.php?demail='.$email.'" class="pull-right btn sub1" style="margin:0px;background:#99cc32"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Approve</b></span></a></td>
+	<td><a href="approvestudent.php?nemail='.$email.'"class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Delete</b></span></b></a></td></tr>';
+}
+$c=0;
+echo '</table></div></div>';
+
+}?>
+<!--students approve end-->
+
+
+<!--professor approve start-->
+<?php if(@$_GET['q']==4) {
+
+$result = mysqli_query($con,"SELECT * FROM un_professors") or die('Error');
+echo  '<div class="panel"><div class="table-responsive"><table class="table table-striped title1">
+<tr><td><b>S.N.</b></td><td><b>Name</b></td><td><b>Gender</b></td><td><b>Email</b></td><td><b>Studentcode</b></td><td><b>Mobile</b></td><td><b>Faculty</b></td><td><b>level</b></td><td><b>Department</b></td><td></td><td></td></tr>';
+$c=1;
+while($row = mysqli_fetch_array($result)) {
+	$name = $row['name'];
+	$gender = $row['gender'];
+    $email = $row['email'];
+    $phone = $row['phone'];
+    $faculty = $row['faculty'];
+    $department = $row ['department'];
+    $course = $row['course'];
+
+	echo '<tr><td>'.$c++.'</td><td>'.$name.'</td><td>'.$gender.'</td><td>'.$phone.'</td><td>'.$faculty.'</td><td>'.$department.'</td><td>'.$course.'</td><td><a href="approveprofessor.php?demail='.$email.'" class="pull-right btn sub1" style="margin:0px;background:#99cc32"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Approve</b></span></a></td>
+	<td><a href="approveprofessor.php?nemail='.$email.'"class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Delete</b></span></b></a></td></tr>';
+}
+$c=0;
+echo '</table></div></div>';
+
+}?>
+<!--students approve end-->
+
+
+
 <!--container closed-->
 </div></div>
 </body>
